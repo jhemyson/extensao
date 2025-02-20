@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Monitor de Logs e Rede</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Configurações</h2>
+      <div class="url-filters">
+        <h3>URLs Monitoradas</h3>
+        <div class="filter-input">
+          <input type="text" id="urlFilter" placeholder="Digite a URL para monitorar">
+          <select id="urlMatchType">
+            <option value="contains">Contém</option>
+            <option value="exact">Exato</option>
+            <option value="regex">Regex</option>
+          </select>
+          <button id="addUrlFilter">Adicionar</button>
+        </div>
+        <div id="urlFiltersList" class="filters-list"></div>
+      </div>
+
+      <div class="controls">
+        <button id="startMonitoring" class="primary-button">Iniciar Monitoramento</button>
+        <button id="clearLogs" class="secondary-button">Limpar Logs</button>
+        <button id="exportLogs" class="secondary-button">Exportar Logs</button>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="tabs">
+        <button class="tab-button active" data-tab="logs">Console Logs</button>
+        <button class="tab-button" data-tab="network">Network</button>
+      </div>
+
+      <div class="tab-content" id="logs-tab">
+        <div class="filters">
+          <label><input type="checkbox" id="errorFilter" value="error" checked> Error</label>
+          <label><input type="checkbox" id="warningFilter" value="warning" checked> Warning</label>
+          <label><input type="checkbox" id="infoFilter" value="info" checked> Info</label>
+          <label><input type="checkbox" id="debugFilter" value="debug" checked> Debug</label>
+        </div>
+        <div class="logs-container" id="logsList"></div>
+      </div>
+
+      <div class="tab-content hidden" id="network-tab">
+        <div class="filters">
+          <label><input type="checkbox" id="getFilter" value="GET" checked> GET</label>
+          <label><input type="checkbox" id="postFilter" value="POST" checked> POST</label>
+          <label><input type="checkbox" id="putFilter" value="PUT" checked> PUT</label>
+          <label><input type="checkbox" id="deleteFilter" value="DELETE" checked> DELETE</label>
+          <select id="statusFilter">
+            <option value="all">All Status</option>
+            <option value="2xx">2xx Success</option>
+            <option value="3xx">3xx Redirection</option>
+            <option value="4xx">4xx Client Error</option>
+            <option value="5xx">5xx Server Error</option>
+          </select>
+        </div>
+        <div class="network-container" id="networkList"></div>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 
