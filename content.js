@@ -374,6 +374,276 @@ function monitorDynamicScripts() {
     };
 }
 
+// Monitorar iframes e conteúdo embedado
+function monitorEmbeddedContent() {
+    // 1. Interceptar criação de iframes
+    const originalCreateElement = document.createElement;
+    document.createElement = function(tagName) {
+        const element = originalCreateElement.apply(document, arguments);
+        if (tagName.toLowerCase() === 'iframe') {
+            // Registrar criação de iframe
+            chrome.runtime.sendMessage({
+                type: 'console',
+                logType: 'info',
+                message: `[IFRAME_CREATED] Iframe será adicionado ao DOM`,
+                timestamp: new Date().toISOString()
+            });
+            
+            // Monitorar quando o iframe é adicionado ao DOM
+            const observer = new MutationObserver((mutations) => {
+                if (document.contains(element)) {
+                    // Iframe foi adicionado ao DOM
+                    chrome.runtime.sendMessage({
+                        type: 'console',
+                        logType: 'info',
+                        message: `[IFRAME_ADDED] ${element.src || 'about:blank'}`,
+                        timestamp: new Date().toISOString()
+                    });
+                    
+                    // Tentar injetar script no iframe quando estiver carregado
+                    element.addEventListener('load', function() {
+                        try {
+                            injectScriptIntoIframe(element);
+                        } catch (e) {
+                            chrome.runtime.sendMessage({
+                                type: 'console',
+                                logType: 'error',
+                                message: `[IFRAME_INJECTION_ERROR] Não foi possível injetar script no iframe: ${e.message}`,
+                                timestamp: new Date().toISOString()
+                            });
+                        }
+                    });
+                    
+                    observer.disconnect();
+                }
+            });
+            
+            observer.observe(document, { subtree: true, childList: true });
+        }
+        return element;
+    };
+    
+    // 2. Monitorar iframes existentes
+    function monitorExistingIframes() {
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+            chrome.runtime.sendMessage({
+                type: 'console',
+                logType: 'info',
+                message: `[EXISTING_IFRAME] ${iframe.src || 'about:blank'}`,
+                timestamp: new Date().toISOString()
+            });
+            
+            try {
+                injectScriptIntoIframe(iframe);
+            } catch (e) {
+                chrome.runtime.sendMessage({
+                    type: 'console',
+                    logType: 'error',
+                    message: `[IFRAME_INJECTION_ERROR] Não foi possível injetar script no iframe existente: ${e.message}`,
+                    timestamp: new Date().toISOString()
+                });
+            }
+        });
+    }
+    
+    // 3. Função para injetar script em um iframe
+    function injectScriptIntoIframe(iframe) {
+        try {
+            // Verificar se podemos acessar o conteúdo do iframe (mesma origem)
+            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+            
+            // Injetar script de monitoramento no iframe
+            const script = iframeDocument.createElement('script');
+            script.textContent = `
+            (function() {
+                // Notificar que o script foi injetado no iframe
+                window.parent.postMessage({
+                    type: 'IFRAME_SCRIPT_INJECTED',
+                    url: window.location.href
+                }, '*');
+                
+                // Interceptar console no iframe
+                const originalConsole = {
+                    log: console.log,
+                    error: console.error,
+                    warn: console.warn,
+                    info: console.info,
+                    debug: console.debug
+                };
+                
+                // Função para enviar logs para o pai
+                function sendLogToParent(type, args) {
+                    try {
+                        const logText = Array.from(args).map(arg => {
+                            if (arg instanceof Error) return arg.toString();
+                            return typeof arg === 'object' ? JSON.stringify(arg) : String(arg);
+                        }).join(' ');
+                        
+                        window.parent.postMessage({
+                            type: 'IFRAME_CONSOLE',
+                            logType: type,
+                            message: logText,
+                            url: window.location.href,
+                            timestamp: new Date().toISOString()
+                        }, '*');
+                    } catch (e) {
+                        // Ignorar erros
+                    }
+                }
+                
+                // Substituir funções do console
+                console.log = function() {
+                    originalConsole.log.apply(console, arguments);
+                    sendLogToParent('log', arguments);
+                };
+                
+                console.error = function() {
+                    originalConsole.error.apply(console, arguments);
+                    sendLogToParent('error', arguments);
+                };
+                
+                console.warn = function() {
+                    originalConsole.warn.apply(console, arguments);
+                    sendLogToParent('warn', arguments);
+                };
+                
+                console.info = function() {
+                    originalConsole.info.apply(console, arguments);
+                    sendLogToParent('info', arguments);
+                };
+                
+                console.debug = function() {
+                    originalConsole.debug.apply(console, arguments);
+                    sendLogToParent('debug', arguments);
+                };
+                
+                // Monitorar scripts no iframe
+                const originalCreateElement = document.createElement;
+                document.createElement = function(tagName) {
+                    const element = originalCreateElement.apply(document, arguments);
+                    if (tagName.toLowerCase() === 'script') {
+                        window.parent.postMessage({
+                            type: 'IFRAME_SCRIPT_CREATED',
+                            src: 'pending',
+                            url: window.location.href,
+                            timestamp: new Date().toISOString()
+                        }, '*');
+                        
+                        // Monitorar quando o src é definido
+                        const originalSrcDescriptor = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src');
+                        if (originalSrcDescriptor && originalSrcDescriptor.set) {
+                            Object.defineProperty(element, 'src', {
+                                set: function(value) {
+                                    window.parent.postMessage({
+                                        type: 'IFRAME_SCRIPT_SRC',
+                                        src: value,
+                                        url: window.location.href,
+                                        timestamp: new Date().toISOString()
+                                    }, '*');
+                                    return originalSrcDescriptor.set.call(this, value);
+                                },
+                                get: originalSrcDescriptor.get
+                            });
+                        }
+                    }
+                    return element;
+                };
+                
+                // Monitorar erros no iframe
+                window.addEventListener('error', function(event) {
+                    window.parent.postMessage({
+                        type: 'IFRAME_ERROR',
+                        message: event.message,
+                        filename: event.filename,
+                        lineno: event.lineno,
+                        colno: event.colno,
+                        url: window.location.href,
+                        timestamp: new Date().toISOString()
+                    }, '*');
+                });
+            })();
+            `;
+            
+            iframeDocument.head.appendChild(script);
+            
+            chrome.runtime.sendMessage({
+                type: 'console',
+                logType: 'info',
+                message: `[IFRAME_SCRIPT_INJECTED] Script injetado com sucesso no iframe: ${iframe.src || 'about:blank'}`,
+                timestamp: new Date().toISOString()
+            });
+        } catch (e) {
+            // Provavelmente um erro de segurança cross-origin
+            chrome.runtime.sendMessage({
+                type: 'console',
+                logType: 'warning',
+                message: `[CROSS_ORIGIN_IFRAME] Não é possível acessar iframe de origem diferente: ${iframe.src}`,
+                timestamp: new Date().toISOString()
+            });
+        }
+    }
+    
+    // 4. Escutar mensagens de iframes
+    window.addEventListener('message', function(event) {
+        // Verificar se a mensagem vem de um iframe
+        if (event.source !== window) {
+            const data = event.data;
+            
+            if (data && (data.type === 'IFRAME_CONSOLE' || 
+                         data.type === 'IFRAME_SCRIPT_CREATED' || 
+                         data.type === 'IFRAME_SCRIPT_SRC' || 
+                         data.type === 'IFRAME_ERROR' ||
+                         data.type === 'IFRAME_SCRIPT_INJECTED')) {
+                
+                // Mapear tipo de mensagem para tipo de log
+                let logType = 'info';
+                if (data.logType === 'error' || data.type === 'IFRAME_ERROR') logType = 'error';
+                else if (data.logType === 'warn') logType = 'warning';
+                
+                // Formatar a mensagem
+                let message = `[${data.type}] `;
+                if (data.message) message += data.message;
+                if (data.src) message += ` Src: ${data.src}`;
+                if (data.url) message += ` (${data.url})`;
+                
+                // Enviar para o background script
+                chrome.runtime.sendMessage({
+                    type: 'console',
+                    logType: logType,
+                    message: message,
+                    timestamp: data.timestamp || new Date().toISOString(),
+                    iframeUrl: data.url
+                });
+            }
+        }
+    });
+    
+    // Iniciar monitoramento de iframes existentes
+    monitorExistingIframes();
+    
+    // 5. Monitorar postMessage
+    const originalPostMessage = window.postMessage;
+    window.postMessage = function() {
+        // Registrar chamadas a postMessage
+        try {
+            const message = arguments[0];
+            const messageStr = typeof message === 'object' ? JSON.stringify(message) : String(message);
+            
+            chrome.runtime.sendMessage({
+                type: 'console',
+                logType: 'info',
+                message: `[POST_MESSAGE_SENT] ${messageStr.substring(0, 100)}${messageStr.length > 100 ? '...' : ''}`,
+                timestamp: new Date().toISOString()
+            });
+        } catch (e) {
+            // Ignorar erros
+        }
+        
+        return originalPostMessage.apply(this, arguments);
+    };
+}
+
 // Modificar a função injectScript para incluir monitoramento de recursos
 function injectScript() {
     const script = document.createElement('script');
@@ -551,6 +821,9 @@ function injectScript() {
     
     document.documentElement.appendChild(resourceMonitorScript);
     resourceMonitorScript.remove();
+
+    // Adicionar monitoramento de iframes
+    monitorEmbeddedContent();
 }
 
 // Injetar o script quando a página carregar
