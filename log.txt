@@ -1,0 +1,344 @@
+ An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+insert @ vendor-fef3f211.js:2
+ this.queryAgentTaskList is not a function (m) - Component: indexMyTodo
+Stack Trace:
+TypeError: this.queryAgentTaskList is not a function
+    at Proxy.mounted (https://brazil.aicccloud.com/service-cloud/aicc-web/static/js/base-e268bd2f.js:1:25444)
+    at https://brazil.aicccloud.com/service-cloud/aicc-web/static/js/vendor-fef3f211.js:2:39921
+    at AE (https://brazil.aicccloud.com/service-cloud/aicc-web/static/js/vendor-fef3f211.js:2:21503)
+    at bg (https://brazil.aicccloud.com/service-cloud/aicc-web/static/js/vendor-fef3f211.js:2:21582)
+    at Tce.t.__weh.t.__weh (https://brazil.aicccloud.com/service-cloud/aicc-web/static/js/vendor-fef3f211.js:2:39800)
+    at J0e (https://brazil.aicccloud.com/service-cloud/aicc-web/static/js/vendor-fef3f211.js:2:22898)
+    at C6t (https://brazil.aicccloud.com/service-cloud/aicc-web/static/js/vendor-fef3f211.js:2:23209)
+x.config.errorHandler @ default-79344035.js:8
+ queryTenantSysParamById Object
+ No need add watermark, the flag is false.
+index.html#/home:1 [Deprecation] Custom state pseudo classes have been changed from ":--swt-score-card-text-color" to ":state(swt-score-card-text-color)". See more here: https://github.com/w3c/csswg-drafts/issues/4805
+ [AICCLOG  17/12/2024, 09:00:22 ] [ null ] : agentStatus change to LOG_OUT
+ [AICCLOG  17/12/2024, 09:00:22 ] [ null ] : refreshAgtStatusLabel, Agent Status change : undefined => status_offline
+ timerHandler==> false 2
+ AudioPlayer2: init AudioElement (chrome)
+ AudioPlayer2: downloadSounds https://brazil.aicccloud.com/service-cloud/aicc-web/static/webrtc/sounds/ [{"ring":"ring1"}]
+ AudioPlayer2: generateTonesSuite
+ AC: setServerConfig() {"addresses":[["wss://brazil2webrtc.aicccloud.com:65061/",1000]],"domain":"brazil2webrtc.aicccloud.com","iceServers":[]}
+ AC: setReconnectIntervals min=2 max=30
+ AC: setRegisterExpires=300
+ AC: setUseSessionTimer=false
+ AC: setConstraints chrome audio  {"echoCancellation":true}
+ AC: setWebSocketKeepAlive pingInterval=20 pongTimeout=true timerThrottlingBestEffort=true pongReport=60 pongDist=false
+ AC: setDtmfOptions useWebRTC=true duration=null interToneGap=null
+ AC: setEnableAddVideo=true
+ AC: setListeners()
+ AC: setModes() {"ice_timeout_fix":2000,"chrome_rtp_timeout_fix":13,"ringing_header_mode":"Allow-Events: talk,hold,conference"}
+ AC: init() autoLogin=true
+ new() [url:"wss://brazil2webrtc.aicccloud.com:65061/"]
+ new()
+ configuration parameters after validation:
+ - authorization_user: "8888200"
+ - password: NOT SHOWN
+ - realm: null
+ - ha1: NOT SHOWN
+ - authorization_jwt: NOT SHOWN
+ - display_name: null
+ - uri: sip:8888200@brazil2webrtc.aicccloud.com
+ - contact_uri: {"_parameters":{"transport":"ws"},"_headers":{},"_scheme":"sip","_user":"8888200","_host":"miwzskiv6a0e.invalid"}
+ - instance_id: "a42833a6-bbeb-4c04-b6a6-371334560c2d"
+ - use_preloaded_route: false
+ - session_timers: false
+ - session_timers_refresh_method: "UPDATE"
+ - session_timers_force_refresher: false
+ - no_answer_timeout: 60000
+ - register: true
+ - register_expires: 300
+ - registrar_server: sip:brazil2webrtc.aicccloud.com
+ - connection_recovery_max_interval: 30
+ - connection_recovery_min_interval: 2
+ - extra_headers: null
+ - via_host: "miwzskiv6a0e.invalid"
+ AC: applied SDK modes: {"video_call_audio_answer_firefox_fix":true,"video_call_audio_answer_safari_fix":true,"ice_timeout_fix":2000,"chrome_rtp_timeout_fix":13,"sbc_ha_pairs_mode":"<undefined>","ringing_header_mode":"Allow-Events: talk,hold,conference","sbc_switch_register5xx_mode":true,"cache_register_auth_mode":true,"check_remote_sdp_mode":true}
+ start()
+ connect()
+ connect()
+ connecting to WebSocket wss://brazil2webrtc.aicccloud.com:65061/
+ WebSocket wss://brazil2webrtc.aicccloud.com:65061/ connected
+ AC>>: loginStateChanged: isLogin=false "connected"
+ send()
+ sending message:
+
+REGISTER sip:brazil2webrtc.aicccloud.com SIP/2.0
+Via: SIP/2.0/WSS miwzskiv6a0e.invalid;branch=z9hG4bK2053670
+Max-Forwards: 69
+To: <sip:8888200@brazil2webrtc.aicccloud.com>
+From: <sip:8888200@brazil2webrtc.aicccloud.com>;tag=ajc9so2p91
+Call-ID: bbgrgcjvgk46qthmrgd1j8
+CSeq: 1 REGISTER
+X-SBC: AudioCodes Mediant
+Contact: <sip:8888200@miwzskiv6a0e.invalid;transport=ws>;+sip.ice;reg-id=1;+sip.instance="<urn:uuid:a42833a6-bbeb-4c04-b6a6-371334560c2d>";expires=300
+Expires: 300
+Allow: INVITE,ACK,CANCEL,BYE,UPDATE,MESSAGE,OPTIONS,REFER,INFO,NOTIFY,SUBSCRIBE
+Supported: path,gruu,outbound
+User-Agent: AudioCodes-WebRTC
+Content-Length: 0
+
+
+
+ send()
+ received WebSocket message
+ received text message:
+
+SIP/2.0 200 OK
+Via: SIP/2.0/WSS miwzskiv6a0e.invalid;branch=z9hG4bK2053670
+From: <sip:8888200@brazil2webrtc.aicccloud.com>;tag=ajc9so2p91
+To: <sip:8888200@brazil2webrtc.aicccloud.com>;tag=0u02tc20
+Call-ID: bbgrgcjvgk46qthmrgd1j8
+CSeq: 1 REGISTER
+Contact: <sip:8888200@miwzskiv6a0e.invalid;transport=ws>;+sip.instance="<urn:uuid:a42833a6-bbeb-4c04-b6a6-371334560c2d>";expires=294;+sip.ice;reg-id=1
+Allow: REGISTER,OPTIONS,INVITE,ACK,CANCEL,BYE,NOTIFY,PRACK,REFER,INFO,SUBSCRIBE,UPDATE
+Expires: 294
+Server: Mediant VE SBC/v.7.20A.258.661
+Content-Length: 0
+
+
+
+ AC>>: loginStateChanged: isLogin=true "login"
+ [AICCLOG  17/12/2024, 09:00:26 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"POST","url":"/agentgateway/resource/onlineagent/301/resetskill/true?skillid=1350;1686;1687;1688&phonelinkage=0"}
+ [AICCLOG  17/12/2024, 09:00:27 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"POST","url":"/agentgateway/resource/onlineagent/301/resetskill/true?skillid=1350;1686;1687;1688&phonelinkage=0"} result is {"result":{},"message":"success","retcode":"0"}
+ [AICCLOG  17/12/2024, 09:00:27 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301?calldata=%7B%22P3%22%3A%22%22%2C%22P4%22%3A%22audio%22%2C%22P5%22%3Afalse%2C%22P6%22%3Afalse%2C%22P7%22%3A0%2C%22P8%22%3A%7B%22innerhelp%22%3A%7B%7D%2C%22transfer%22%3A%7B%7D%2C%22callinner%22%3A%7B%7D%7D%7D"}
+ MessageEvent {isTrusted: true, data: 'startEventTimer', origin: '', lastEventId: '', source: null, …} '1111'
+ [AICCLOG  17/12/2024, 09:00:27 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301?calldata=%7B%22P3%22%3A%22%22%2C%22P4%22%3A%22audio%22%2C%22P5%22%3Afalse%2C%22P6%22%3Afalse%2C%22P7%22%3A0%2C%22P8%22%3A%7B%22innerhelp%22%3A%7B%7D%2C%22transfer%22%3A%7B%7D%2C%22callinner%22%3A%7B%7D%7D%7D"} result is {"message":"success","event":{"eventType":"AgentOther_InService","workNo":"301","content":null},"retcode":"0"}
+ EventHandle.agentEventHandle : set ipccEventTimer = 0
+ The following deprecated features are currently enabled and have been removed in TinyMCE 6.0. These features will no longer work and should be removed from the TinyMCE configuration. See https://www.tiny.cloud/docs/tinymce/6/migration-from-5x/ for more information.
+
+Options:
+- toolbar_drawer
+w4e @ vendor-fef3f211.js:237
+zDe @ vendor-fef3f211.js:242
+XO @ vendor-fef3f211.js:255
+jt @ vendor-fef3f211.js:255
+(anonymous) @ vendor-fef3f211.js:255
+da @ vendor-fef3f211.js:207
+Ne @ vendor-fef3f211.js:255
+executeHandlers @ vendor-fef3f211.js:208
+fe @ vendor-fef3f211.js:208
+V @ vendor-fef3f211.js:208
+dp @ vendor-fef3f211.js:208
+bind @ vendor-fef3f211.js:208
+LT @ vendor-fef3f211.js:208
+init @ vendor-fef3f211.js:255
+initTinyMCE @ index-1c40ebd6.js:1
+mounted @ index-1c40ebd6.js:1
+(anonymous) @ vendor-fef3f211.js:2
+AE @ vendor-fef3f211.js:2
+bg @ vendor-fef3f211.js:2
+Tce.t.__weh.t.__weh @ vendor-fef3f211.js:2
+J0e @ vendor-fef3f211.js:2
+C6t @ vendor-fef3f211.js:2
+Promise.then
+x6t @ vendor-fef3f211.js:2
+I_e @ vendor-fef3f211.js:2
+T6t @ vendor-fef3f211.js:2
+E @ vendor-fef3f211.js:2
+tLe @ vendor-fef3f211.js:2
+Pbe @ vendor-fef3f211.js:2
+xce @ vendor-fef3f211.js:2
+(anonymous) @ vendor-fef3f211.js:2
+tLe @ vendor-fef3f211.js:2
+Pbe @ vendor-fef3f211.js:2
+xce @ vendor-fef3f211.js:2
+(anonymous) @ vendor-fef3f211.js:2
+tLe @ vendor-fef3f211.js:2
+Pbe @ vendor-fef3f211.js:2
+xce @ vendor-fef3f211.js:2
+set value @ vendor-fef3f211.js:2
+j @ vendor-fef3f211.js:10
+(anonymous) @ vendor-fef3f211.js:10
+Promise.then
+L @ vendor-fef3f211.js:10
+T @ vendor-fef3f211.js:10
+fe.push @ default-79344035.js:8
+showTab @ base-e268bd2f.js:23
+showTab @ base-e268bd2f.js:23
+AE @ vendor-fef3f211.js:2
+bg @ vendor-fef3f211.js:2
+wDt @ vendor-fef3f211.js:2
+showTab @ base-e268bd2f.js:23
+openMenuContent @ base-e268bd2f.js:23
+onNodeClick @ base-e268bd2f.js:23
+(anonymous) @ base-e268bd2f.js:23
+(anonymous) @ vendor-fef3f211.js:2
+AE @ vendor-fef3f211.js:2
+bg @ vendor-fef3f211.js:2
+n @ vendor-fef3f211.js:2
+trigger @ vendor-fef3f211.js:313
+(anonymous) @ vendor-fef3f211.js:313
+each @ vendor-fef3f211.js:313
+each @ vendor-fef3f211.js:313
+trigger @ vendor-fef3f211.js:313
+k.fn.<computed> @ vendor-fef3f211.js:316
+clickMenuIndex @ base-e268bd2f.js:23
+AE @ vendor-fef3f211.js:2
+bg @ vendor-fef3f211.js:2
+w @ vendor-fef3f211.js:2
+AE @ vendor-fef3f211.js:2
+C6t @ vendor-fef3f211.js:2
+Promise.then
+x6t @ vendor-fef3f211.js:2
+Cce @ vendor-fef3f211.js:2
+E @ vendor-fef3f211.js:2
+tLe @ vendor-fef3f211.js:2
+Pbe @ vendor-fef3f211.js:2
+xce @ vendor-fef3f211.js:2
+(anonymous) @ vendor-fef3f211.js:2
+tLe @ vendor-fef3f211.js:2
+Pbe @ vendor-fef3f211.js:2
+OE @ vendor-fef3f211.js:2
+(anonymous) @ vendor-fef3f211.js:2
+set value @ vendor-fef3f211.js:2
+(anonymous) @ vendor-fef3f211.js:2
+clickMenu @ common-88b14c23.js:109
+(anonymous) @ vendor-fef3f211.js:6
+(anonymous) @ CCAction.js:989
+setTimeout
+handleWorkBench @ CCAction.js:988
+signInCallback @ CCAction.js:925
+(anonymous) @ CCAction.js:843
+Promise.then
+(anonymous) @ CCAction.js:838
+setTimeout
+agentLogin @ CCAction.js:832
+(anonymous) @ CCAction.js:312
+Promise.then
+(anonymous) @ CCAction.js:288
+Promise.then
+signIn @ CCAction.js:260
+await in signIn
+s.jsIsLoaded.n.onClick.t.<computed>.t.<computed> @ base-e268bd2f.js:23
+AE @ vendor-fef3f211.js:2
+bg @ vendor-fef3f211.js:2
+n @ vendor-fef3f211.js:2
+ [AICCLOG  17/12/2024, 09:00:27 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/onlineagent/301/agentstatus"}
+ [AICCLOG  17/12/2024, 09:00:28 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/onlineagent/301/agentstatus"} result is {"result":{"isWorking":false,"agentState":4},"message":"success","retcode":"0"}
+ [AICCLOG  17/12/2024, 09:00:28 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+ [AICCLOG  17/12/2024, 09:00:28 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","event":{"eventType":"AgentState_Ready","workNo":"301","content":null},"retcode":"0"}
+ EventHandle.agentEventHandle : set ipccEventTimer = 0
+ [AICCLOG  17/12/2024, 09:00:28 ] [ 301 ] : agentStatus change to IDLE
+ [AICCLOG  17/12/2024, 09:00:28 ] [ 301 ] : refreshAgtStatusLabel, Agent Status change : status_offline => status_idle
+ timerHandler==> false 4
+ [AICCLOG  17/12/2024, 09:00:28 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301?calldata=%7B%22P3%22%3A%22%22%2C%22P4%22%3A%22audio%22%2C%22P5%22%3Afalse%2C%22P6%22%3Afalse%2C%22P7%22%3A0%2C%22P8%22%3A%7B%22innerhelp%22%3A%7B%7D%2C%22transfer%22%3A%7B%7D%7D%7D"}
+ [AICCLOG  17/12/2024, 09:00:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+ [AICCLOG  17/12/2024, 09:00:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"}
+ [AICCLOG  17/12/2024, 09:00:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"} result is {"result":{"talktime":0,"answernums":0,"calloutnums":0},"message":"success","retcode":"0"}
+ [AICCLOG  17/12/2024, 09:00:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+ [AICCLOG  17/12/2024, 09:00:38 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301?calldata=%7B%22P3%22%3A%22%22%2C%22P4%22%3A%22audio%22%2C%22P5%22%3Afalse%2C%22P6%22%3Afalse%2C%22P7%22%3A0%2C%22P8%22%3A%7B%22innerhelp%22%3A%7B%7D%2C%22transfer%22%3A%7B%7D%7D%7D"} result is {"message":"success","retcode":"0"}
+ EventHandle.agentEventHandle : set ipccEventTimer = 0
+ [AICCLOG  17/12/2024, 09:00:39 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+ [AICCLOG  17/12/2024, 09:00:39 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+ [AICCLOG  17/12/2024, 09:00:40 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 AC: keep-alive: Server supports CRLF pong
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:00:49 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:00:49 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:00:49 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:00:50 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:00:59 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:00:59 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:00:59 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:00:59 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:00:59 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"} result is {"result":{"talktime":0,"answernums":0,"calloutnums":0},"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:00 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:09 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:09 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:09 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:10 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:19 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:19 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:19 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:20 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","event":{"eventType":"AgentState_Busy","workNo":"301","content":null},"retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : agentStatus change to TALKING
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : refreshAgtStatusLabel, Agent Status change : status_idle => status_talk_OCCUPY
+common-88b14c23.js:109 timerHandler==> false 7
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","event":{"eventType":"AgentEvent_Ringing","workNo":"301","content":{"callid":"1734436889-17192526","caller":"5511971899979","transfer":"no","called":"301","feature":"0","mediaType":"53","type":"main","transfrom":"","mediaAbility":"5"}},"retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/callinfobycallid/1734436889-17192526"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/callinfobycallid/1734436889-17192526"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301?calldata=%7B%22P3%22%3A%22%22%2C%22P4%22%3A%22audio%22%2C%22P5%22%3Atrue%2C%22P6%22%3Afalse%2C%22P7%22%3A0%2C%22P8%22%3A%7B%22innerhelp%22%3A%7B%7D%2C%22transfer%22%3A%7B%7D%7D%7D"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/callinfobycallid/1734436889-17192526"} result is {"result":{"callid":"1734436889-17192526","callfeature":0,"called":"301","caller":"5511971899979","callskillid":1350,"callskill":"TESTE_WhatsApp","calldata":"{\"originUserId\":\"5511971899979\",\"channel\":\"WHATSAPP\",\"chatChannelConfigId\":\"202107201332245305\",\"chatUserName\":\"AGATHA DE MELLO SILVA\",\"directionCode\":\"1\"}","orgicallednum":"\u0001","endtime":null,"begintime":1734436889000,"userPriority":0,"trunkNo":0,"logontimes":1734436889,"mediaType":53,"mediaAbility":5,"waitTime":0,"trace":null,"setTime":1734436889828},"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"PUT","url":"/agentgateway/resource/voicecall/301/answer?callid=1734436889-17192526"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/callinfobycallid/1734436889-17192526"} result is {"result":{"callid":"1734436889-17192526","callfeature":0,"called":"301","caller":"5511971899979","callskillid":1350,"callskill":"TESTE_WhatsApp","calldata":"{\"originUserId\":\"5511971899979\",\"channel\":\"WHATSAPP\",\"chatChannelConfigId\":\"202107201332245305\",\"chatUserName\":\"AGATHA DE MELLO SILVA\",\"directionCode\":\"1\"}","orgicallednum":"\u0001","endtime":null,"begintime":1734436889000,"userPriority":0,"trunkNo":0,"logontimes":1734436889,"mediaType":53,"mediaAbility":5,"waitTime":0,"trace":null},"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"} result is {"result":{"talktime":0,"answernums":0,"calloutnums":0},"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:30 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"PUT","url":"/agentgateway/resource/voicecall/301/answer?callid=1734436889-17192526"} result is {"result":{},"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:30 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:30 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301?calldata=%7B%22P3%22%3A%22%22%2C%22P4%22%3A%22audio%22%2C%22P5%22%3Atrue%2C%22P6%22%3Afalse%2C%22P7%22%3A0%2C%22P8%22%3A%7B%22innerhelp%22%3A%7B%7D%2C%22transfer%22%3A%7B%7D%7D%7D"} result is {"message":"success","event":{"eventType":"AgentEvent_Talking","workNo":"301","content":{"callid":"1734436889-17192526","caller":"5511971899979","called":"301","feature":"0","type":"main","mediaAbility":"5"}},"retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 timerHandler==> false 7
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:30 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301?calldata=%7B%22P3%22%3A%22%22%2C%22P4%22%3A%22audio%22%2C%22P5%22%3Afalse%2C%22P6%22%3Afalse%2C%22P7%22%3A0%2C%22P8%22%3A%7B%22innerhelp%22%3A%7B%7D%2C%22transfer%22%3A%7B%7D%7D%7D"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:30 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":{"callid":"1734436889-17192526","data":"{\"channel\":\"WHATSAPP\",\"controlType\":\"CHAT\",\"mediaType\":\"TEXT\",\"inaction\":\"8\",\"from\":\"202107201332245305\"}"},"method":"POST","url":"/agentgateway/resource/mediacall/301/sendmessage"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:30 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":{"callid":"1734436889-17192526","data":"{\"channel\":\"WHATSAPP\",\"controlType\":\"CHAT\",\"mediaType\":\"TEXT\",\"inaction\":\"8\",\"from\":\"202107201332245305\"}"},"method":"POST","url":"/agentgateway/resource/mediacall/301/sendmessage"} result is {"result":{},"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:30 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/onlineagent/301/agentstatus"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:30 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/onlineagent/301/agentstatus"} result is {"result":{"isWorking":true,"agentState":7},"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:39 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:40 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:40 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301?calldata=%7B%22P3%22%3A%22%22%2C%22P4%22%3A%22audio%22%2C%22P5%22%3Afalse%2C%22P6%22%3Afalse%2C%22P7%22%3A0%2C%22P8%22%3A%7B%22innerhelp%22%3A%7B%7D%2C%22transfer%22%3A%7B%7D%7D%7D"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:40 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:49 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:50 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:50 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:50 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:59 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:01:59 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:00 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"} result is {"result":{"talktime":30,"answernums":1,"calloutnums":0},"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:00 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:00 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:01 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:09 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:10 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:11 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:11 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:19 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:20 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:21 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:21 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:29 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"} result is {"result":{"talktime":60,"answernums":1,"calloutnums":0},"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:30 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:31 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:31 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:39 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:40 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:41 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:41 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:49 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:50 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:52 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:52 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:59 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:59 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:02:59 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/calldata/301/statisticsEx"} result is {"result":{"talktime":90,"answernums":1,"calloutnums":0},"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:03:00 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:03:02 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:03:02 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:03:09 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:03:10 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:03:12 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"} result is {"message":"success","retcode":"0"}
+common-88b14c23.js:109 EventHandle.agentEventHandle : set ipccEventTimer = 0
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:03:12 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"body":null,"method":"GET","url":"/agentgateway/resource/agentevent/301"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:03:19 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll begin, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"}
+common-88b14c23.js:109 [AICCLOG  17/12/2024, 09:03:20 ] [ 301 ] : ccagent.requestAgentEvent : agentevent poll ok, param is : {"method":"GET","url":"/agentgateway/resource/queuedevice/301/waitnumbyagent"} result is {"result":0,"message":"success","retcode":"0"}

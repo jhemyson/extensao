@@ -5,10 +5,11 @@
   "description": "Monitora logs e requisições de rede com filtros personalizados",
   "permissions": [
     "storage",
-    "webRequest",
     "tabs",
+    "webRequest",
+    "webRequestBlocking",
     "debugger",
-    "downloads"
+    "<all_urls>"
   ],
   "host_permissions": [
     "*://*/*"
