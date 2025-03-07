@@ -176,16 +176,55 @@ input:checked + .slider:before {
   padding: 10px;
 }
 
-.log-entry {
-  padding: 5px;
+.log-entry, .network-entry {
+  color: black !important;
+  background-color: white !important;
   border-bottom: 1px solid #eee;
+  padding: 8px;
   font-family: monospace;
+  word-break: break-all;
 }
 
-.log-entry.error { color: #dc3545; }
-.log-entry.warning { color: #ffc107; }
-.log-entry.info { color: #17a2b8; }
-.log-entry.debug { color: #6c757d; }
+.log-entry.error,
+.log-entry.warning,
+.log-entry.info,
+.log-entry.debug {
+  color: black !important;
+}
+
+.network-entry .method {
+  color: black !important;
+  font-weight: bold;
+}
+
+.network-entry .method.GET,
+.network-entry .method.POST,
+.network-entry .method.PUT,
+.network-entry .method.DELETE {
+  color: black !important;
+}
+
+.network-entry .status {
+  color: black !important;
+  font-weight: bold;
+}
+
+.network-entry .status.success,
+.network-entry .status.redirect,
+.network-entry .status.client-error,
+.network-entry .status.server-error {
+  color: black !important;
+}
+
+.time, .url {
+  color: black !important;
+  opacity: 0.7;
+}
+
+.message {
+  color: black !important;
+  margin-left: 8px;
+}
 
 .sidebar {
   min-width: 250px;

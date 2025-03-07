@@ -164,24 +164,76 @@ chrome.webRequest.onCompleted.addListener(
 // Receber mensagens do content script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === 'console') {
-        chrome.storage.local.get(['monitoring', 'urlFilters'], (result) => {
-            if (!result.monitoring) return;
-
-            const filters = result.urlFilters || [];
-            const matchesFilter = filters.some(filter => {
-                if (!filter.active) return false;
-                return sender.tab.url.includes(filter.url);
-            });
-
-            if (matchesFilter) {
-                addLog({
-                    type: 'console',
-                    level: message.logType,
-                    message: message.message,
-                    url: sender.tab.url
+        // Verificar se a mensagem contém informações sobre recursos JavaScript
+        const isResourceLog = message.message && (
+            message.message.includes('[DYNAMIC_SCRIPT_') ||
+            message.message.includes('[FETCH_JS]') ||
+            message.message.includes('[XHR_JS]') ||
+            message.message.includes('[JS_CONTENT]') ||
+            message.message.includes('[EVAL_') ||
+            message.message.includes('[FUNCTION_') ||
+            message.message.includes('[SCRIPT_')
+        );
+        
+        if (isResourceLog) {
+            // Processar log de recurso JavaScript
+            const log = {
+                type: 'resource',
+                level: message.logType || 'info',
+                message: message.message,
+                url: sender.tab ? sender.tab.url : 'unknown',
+                timestamp: message.timestamp || Date.now(),
+                tabId: sender.tab ? sender.tab.id : null
+            };
+            
+            // Verificar se corresponde a algum filtro antes de adicionar
+            chrome.storage.local.get(['monitoring', 'urlFilters'], (result) => {
+                if (!result.monitoring) return;
+                
+                const filters = result.urlFilters || [];
+                const matchesFilter = filters.some(filter => {
+                    if (!filter.active) return false;
+                    
+                    const urlToCheck = log.url;
+                    
+                    switch (filter.type) {
+                        case 'contains':
+                            return urlToCheck.includes(filter.url);
+                        case 'exact':
+                            return urlToCheck === filter.url;
+                        case 'regex':
+                            try {
+                                return new RegExp(filter.url).test(urlToCheck);
+                            } catch (e) {
+                                return false;
+                            }
+                    }
                 });
-            }
-        });
+                
+                if (matchesFilter) {
+                    addLog(log);
+                }
+            });
+        } else {
+            chrome.storage.local.get(['monitoring', 'urlFilters'], (result) => {
+                if (!result.monitoring) return;
+
+                const filters = result.urlFilters || [];
+                const matchesFilter = filters.some(filter => {
+                    if (!filter.active) return false;
+                    return sender.tab.url.includes(filter.url);
+                });
+
+                if (matchesFilter) {
+                    addLog({
+                        type: 'console',
+                        level: message.logType,
+                        message: message.message,
+                        url: sender.tab.url
+                    });
+                }
+            });
+        }
     } else if (message.action === 'clearLogs') {
         logsBuffer = [];
         chrome.storage.local.set({ currentLogs: [] });
@@ -323,15 +375,29 @@ function onDebuggerEvent(debuggeeId, message, params) {
                                  params.exceptionDetails?.text || 
                                  'Exceção desconhecida';
             
+            // Verificar se é um TypeError
+            const isTypeError = exceptionText.includes('TypeError') || 
+                               (params.exceptionDetails?.exception?.className === 'TypeError');
+            
+            // Extrair informações do componente
+            const componentInfo = exceptionText.match(/Component: (\w+)/);
+            const componentName = componentInfo ? componentInfo[1] : null;
+            
             log = {
                 type: 'console',
                 level: 'error',
-                message: `Exceção: ${exceptionText}`,
+                message: `${isTypeError ? '[TypeError]' : 'Exceção:'} ${exceptionText}`,
                 url: url,
                 sourceUrl: sourceUrl,
+                componentName: componentName,
                 timestamp: Date.now(),
                 rawData: JSON.stringify(params)
             };
+            
+            // Se temos informações do componente, adicionar ao início da mensagem
+            if (componentName) {
+                log.message = `[${componentName}] ${log.message}`;
+            }
         } else if (message === 'Log.entryAdded') {
             // Entradas de log gerais
             url = params.entry.url || sourceUrl || 'unknown';
